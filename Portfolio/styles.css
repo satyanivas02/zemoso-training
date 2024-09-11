@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+
+.nav-links li {
+    padding: 10px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #f39c12;
+}
+.nav-links a.active {
+    color: #f39c12; 
+}
+/* Burger Menu Styling */
+.nav-toggle {
+    display: none;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        left: 0;
+    }
+
+    .nav-toggle:checked + .nav-links {
+        display: flex;
+    }
+
+    .nav-links li {
+        text-align: center;
+        padding: 20px;
+        width: 100%;
+    }
+
+    .burger {
+        display: block;
+    }
+}
+
+/* Home Section */
+#home {
+    height: 100vh;
+    background: url('photo.jpg') no-repeat center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(251, 248, 252);
+    margin-top: 60px; /* To account for fixed navbar */
+}
+
+.home-content {
+    text-align: center;
+    padding-right: 30px;
+    padding-bottom: 40px;
+}
+
+.home-content h1 {
+    font-size: 48px;
+}
+
+.home-content p {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+/* About Section */
+#about {
+    padding: 60px;
+    margin-top: 60px;
+    display: block;
+    text-align: center;
+    background-color: rgb(252, 228, 232);
+}
+.about1{
+    padding: 60px;
+    margin-top: 60px;
+    display: block;
+    text-align: center;
+}
+#about h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+#about p {
+    font-size: 18px;
+    line-height: 1.6;
+    align-items: center;
+}
+
+/* Contact Section */
+#contact {
+    padding: 60px;
+    margin-top: 60px;
+    background-image: url(https://img.pikbest.com/wp/202347/architecture-portfolio-luxurious-blue-abstract-wave-3d-rendered-wall-background-for-websites-presentations-and-portfolios_9759565.jpg!w700wp);
+    background-size: cover;
+    color: white;
+}
+
+#contact h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.contact-form button {
+    padding: 10px;
+    font-size: 18px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #f39c12;
+}
+
+/* Gallery Section */
+#gallery {
+    padding: 60px;
+    margin-top: 60px;
+    background-color: black;
+}
+
+#gallery h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #afa4df;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+#gallery:active{
+    background-size: contain;
+    background-image: url(https://www.usnews.com/object/image/0000018d-fbc4-ddec-a3fd-fbef35f20000/24my-brzts-sicily-14.jpg?update-time=1709325955761&size=responsive640);
+    
+}
+
+.grid-item img {
+    width: 100%;
+    height: 245px;
+    display: block;
+    border: 2px solid #333;
+}
+
+#lin{
+    height: 15px;
+
+}
+
+.footer {
+    background-color: #333; /* Dark background */
+    color: white; /* Light text */
+    text-align: center; /* Center the content */
+    padding: 5px 0; /* Vertical padding */
+    position: fixed; /* Fixed at the bottom */
+    bottom: 0; /* Stick to bottom */
+    width: 100%; /* Full width */
+    z-index: 100; /* Ensure it appears on top of other content */
+}
+
+.footer p {
+    margin: 2px 0; /* Small margin for each paragraph */
+}
+
+
