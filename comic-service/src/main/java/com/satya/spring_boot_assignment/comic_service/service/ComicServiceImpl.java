@@ -22,7 +22,7 @@ public class ComicServiceImpl implements ComicService {
     private final String reviewServiceUrl;
 
     public ComicServiceImpl(ComicRepository comicRepository, RestTemplate restTemplate,
-                            @Value("${review.service.url}") String reviewServiceUrl) {
+                            @Value("http://review-service") String reviewServiceUrl) {
         this.comicRepository = comicRepository;
         this.restTemplate = restTemplate;
         this.reviewServiceUrl = reviewServiceUrl;
@@ -73,9 +73,8 @@ public class ComicServiceImpl implements ComicService {
     public List<ReviewDTO> getReviewsForComic(Long comicId) {
         Comic comic = comicRepository.findById(comicId)
                 .orElseThrow(() -> new RuntimeException("Comic not found"));
-        System.out.println("===>DEBUG: reviewServiceUrl"+reviewServiceUrl);
         ResponseEntity<List<ReviewDTO>> response = restTemplate.exchange(
-                "http://review-service" + "/reviews/comic/" + comicId,
+                reviewServiceUrl + "/reviews/comic/" + comicId,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<List<ReviewDTO>>() {}
