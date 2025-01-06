@@ -34,8 +34,16 @@ public class ReviewControllerTest {
     void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        review1 = new Review(1L, "Great anime!", 5.0, LocalDateTime.now(), 1L);
-        review2 = new Review(2L, "Awesome!", 4.5, LocalDateTime.now(), 1L);
+        review1 = new Review(1L,
+                "An emotional and heartwarming story. Truly a masterpiece!",
+                4.8,
+                LocalDateTime.of(2025, 1, 3, 12, 13, 8),
+                1L);
+        review2 = new Review(2L,
+                "A gritty and realistic portrayal of Batman’s origin.",
+                4.5,
+                LocalDateTime.of(2025, 1, 3, 12, 13, 8),
+                2L);
     }
 
 
@@ -77,7 +85,7 @@ public class ReviewControllerTest {
     }
 
     @Test
-    void GetReviewsByAnimeId_ReturnsListOfReviews_WhenAnimeIdExists() {
+    void GetReviewsByAnimeId_ReturnsListOfReviews_WhenComicIdExists() {
         List<EntityModel<Review>> reviews = Arrays.asList(
                 EntityModel.of(review1),
                 EntityModel.of(review2)
@@ -149,18 +157,18 @@ public class ReviewControllerTest {
     }
 
     @Test
-    void DeleteReviewsByAnimeId_ReturnsSuccess_WhenAnimeIdExists() {
+    void DeleteReviewsByComicId_ReturnsSuccess_WhenComicIdExists() {
         doNothing().when(reviewService).deleteByComicId(1L);
 
         ResponseEntity<String> result = reviewController.deleteReviewsByComicId(1L);
 
         assertEquals(HttpStatus.OK, result.getStatusCode());
-        assertEquals("All reviews for the anime deleted successfully", result.getBody());
+        assertEquals("All reviews for the comic deleted successfully", result.getBody());
         verify(reviewService, times(1)).deleteByComicId(1L);
     }
 
     @Test
-    void DeleteReviewsByAnimeId_ReturnsError_WhenExceptionOccurs() {
+    void DeleteReviewsByComicId_ReturnsError_WhenExceptionOccurs() {
         doThrow(new RuntimeException("Database error")).when(reviewService).deleteByComicId(1L);
 
         ResponseEntity<String> result = reviewController.deleteReviewsByComicId(1L);
