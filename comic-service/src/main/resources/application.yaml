@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: comic-service
+#    cloud param is recent change
+  cloud:
+    discovery:
+      enabled: true
+#    config:
+#      uri: http://localhost:8888
+  config:
+    import: "optional:configserver:http://localhost:8088"
+  datasource:
+    url: jdbc:mysql://localhost:3306/comicdb
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+
+review:
+  service:
+    url: http://localhost:8082
